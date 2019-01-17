@@ -1,0 +1,90 @@
+<head>
+  <title>CamionesMonster</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="/Content/images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/Content/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/Content/css/main.css">
+  <!--===============================================================================================-->
+</head>
+  <div class="container-login100" id="login" v-cloak>
+      <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+              <img src="/Content/images/img-01.png" alt="IMG">
+          </div>
+          <ajax-form class="login100-form validate-form"  action="login" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
+            <span class="login100-form-title">
+              CamionesMonster
+          </span>
+            <div class="form-group wrap-input100 validate-input">
+              <input class="input100" type="email" class="form-control" placeholder="Correo electrónico" :class="[formErrors.emailAddress ? 'is-invalid' : '']" v-model.trim="formData.emailAddress" autocomplete="email" focus-first>
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+              <div class="invalid-feedback" v-if="formErrors.emailAddress">Please provide a valid email address.</div>
+            </div>
+
+            <div class="form-group wrap-input100 validate-input">
+              <input class="input100" type="password" class="form-control" placeholder="Contraseña" :class="[formErrors.password ? 'is-invalid' : '']" v-model.trim="formData.password" autocomplete="current-password">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+              <div class="invalid-feedback" v-if="formErrors.password">Por favor ingrese su contraseña.</div>
+            </div>
+            <div class="form-group form-check">
+              <input class="form-check-input" type="checkbox" id="remember" name="rememberMe" v-model="formData.rememberMe"/>
+              <label class="form-check-label" for="remember">Recordarme</label>
+            </div>
+            <p class="text-danger" v-if="cloudError==='badCombo'"><small>Sus credenciales son incorrectas por favor verifique su correo y su contraseña.</small></p>
+            <p class="text-danger" v-else-if="cloudError"><small>An error occured while processing your request. Please check your information and try again, or <a href="/contact">contact support</a> if the error persists.</small></p>
+            <div class="form-group container-login100-form-btn">
+              <ajax-button class="login100-form-btn" :syncing="syncing" class="btn-dark btn-lg btn-block">Entrar</ajax-button>
+            </div>
+            <p class="text-center"><a href="/password/forgot">Olvido su contraseña?</a></p>
+          </ajax-form>
+
+      </div>
+</div>
+<!--<div id="login" v-cloak>
+  <div class="container">
+    <h1 class="text-center">Sign in to your account</h1>
+    <div class="login-form-container">
+      <hr/>
+      <ajax-form action="login" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email address" :class="[formErrors.emailAddress ? 'is-invalid' : '']" v-model.trim="formData.emailAddress" autocomplete="email" focus-first>
+          <div class="invalid-feedback" v-if="formErrors.emailAddress">Please provide a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" :class="[formErrors.password ? 'is-invalid' : '']" v-model.trim="formData.password" autocomplete="current-password">
+          <div class="invalid-feedback" v-if="formErrors.password">Please enter your password.</div>
+        </div>
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" id="remember" name="rememberMe" v-model="formData.rememberMe"/>
+          <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+        <p class="text-danger" v-if="cloudError==='badCombo'"><small>The credentials you entered are not associated with an account. Please check your email and/or password and try again.</small></p>
+        <p class="text-danger" v-else-if="cloudError"><small>An error occured while processing your request. Please check your information and try again, or <a href="/contact">contact support</a> if the error persists.</small></p>
+        <div class="form-group">
+          <ajax-button :syncing="syncing" class="btn-dark btn-lg btn-block">Sign in</ajax-button>
+        </div>
+      </ajax-form>
+      <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
+    </div>
+  </div>
+</div>-->
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
